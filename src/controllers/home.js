@@ -8,6 +8,9 @@ router.get('/', (req, res) => {
     const cookies = parseCookieData(cookieData);
 
     const useDark = cookies.theme == 'dark'
+
+    req.session.message = 'hello';
+
     res.render('home', { useDark });
 });
 
@@ -19,6 +22,9 @@ router.get('/set', (req, res) => {
 router.get('/get', (req, res) => {
     const cookieData = req.headers['cookie'];/* винаги тук се пише с малки букви, въпреки че в протокола са с главни */
     console.log(cookieData);
+
+    console.log(req.session);
+    
     res.render('get');
 });
 
